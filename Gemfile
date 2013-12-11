@@ -21,5 +21,6 @@ gem 'httparty'
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', require: false
+  gem 'webmock'
   gem 'vcr'
 end
