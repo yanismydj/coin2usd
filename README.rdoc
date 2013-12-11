@@ -1,0 +1,53 @@
+== Coin2usd
+Challenge for coinbase
+
+Instructions:
+
+In this challenge you will be asked to build a simple web app (or mobile app - your choice) which uses an API to calculate exchange rates between USD and bitcoin.
+
+The time limit to complete it is 3 hours.  You can program it in any language(s) you want, and ideally the final solution should be live on the web somewhere when you're done (using a free service like Heroku or a server you control).  If you can't get it live on the web for some reason this won't be held against you, but in that case you should include clear instructions for us to run/test it locally.
+
+You should deliver your solution (zipped code plus write up) by email to jobs@coinbase.com within 3 hours of when you receive these instructions by email.  If anything in this readme is unclear, feel free to make a reasonable assumption, state it in your write up, and continue on (there probably won't be time to get a question answered by email).
+
+INSTRUCTIONS
+Write a simple web app that calculates exchange rates between Bitcoin and USD.  Your app will use the BitStamp API to retrieve the real time order book.
+
+https://www.bitstamp.net/api/
+https://www.bitstamp.net/api/order_book/
+
+The order book is an array of bids (offers to buy) and asks (offers to sell).  Each order has a price and quantity.  Bids and asks are sorted by price.  You should start with the lowest bid price and highest ask price.  If the quantity you would like to buy or sell, cannot be fulfilled by the lowest bid, or highest ask, you will need to consume multiple bids or asks, in order, and your quote will be a weighted average of those prices.
+
+Your calculated quotes should take into account:
+- whether the user is buying or selling
+- the quantity the user is buying or selling (there is a 'depth' to the market here that eats through the order book)
+- a % commission (or fee) that you as the exchange will take on both buys and sells, this should be set at 1% for this challenge
+
+More explanation on calculating quotes: the quantity your user enters will rarely match a quantity in the order book exactly.  This means your code will need to aggregate orders in the order book, or use parts of orders to arrive at the exact quantity, and your final quote will be a weighted average of those prices.  A buy order should start with the lowest priced asks and work its way up.  A sell order should start with the highest priced bids and work its way down.  Make sure you have the sort order correct and are pulling from the correct pool or bids or asks.
+
+A user should be able to visit your app, enter an amount they want to buy or sell of bitcoin, and get a USD price out somehow.  They should also be able to enter an amount in USD that they want to buy or sell, and get a bitcoin price out the other side.  The resulting price should include the variables mentioned above (depth, buy vs sell, and commission).  See if you can make the user interface intuitive/easy to understand for the user, and provide reasonable feedback if they enter bad data or an amount that is too large.
+
+What's the minimum number of test cases needed to ensure your solution works in all situations?  Extra points if your solution includes such a test suite.
+
+Your solution should also include a write up, describing your approach.  What performance trade offs did you make?  What could be improved/optimized or made more reliable in production?  What usability challenges did you encounter and how did you solve them?  Your write up can be any length but if you're spending more than 10-20 minutes on it it might be too long.
+
+EVALUATION
+* code quality/readability
+* performance/scalability
+* user interface/ease of use/design
+* your write up
+* Bonus: Include automated testing of your code and include in your write up how to run the test suite.
+* Bonus: Deploy it somewhere live on the web (don't spend money to do it - but something like Heroku's free plan or a server you already control would be fine)
+* Bonus: Surprise us or be creative.  Add some cool extra feature that makes it more fun/useful/creative
+
+DELIVERABLE
+* your source code zipped and attached in the email, within 3 hours of when you receive the email
+* a link to your live demo if you have one
+* a short write up describing your approach
+* clear instructions (exactly what to type on the command line, any dependencies) to run/compile your app and run your test suite if you have one
+
+
+SUGGESTIONS
+
+* IMPORTANT!! get a basic version working before trying to optimize and do anything fancy, it's better to have a basic version working with a description in your write up about what you *could* do given more time rather than a half finished advanced solution
+* also, please keep this document and your code confidential (don't post it publicly online) if possible, as it could be used by other candidates, thanks!
+
