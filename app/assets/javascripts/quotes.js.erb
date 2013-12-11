@@ -1,0 +1,15 @@
+$(function() {
+  $('#price_wrap').hide();
+
+  $("#quote_form").submit(function(event) {
+    event.preventDefault();
+    quantity = $("#quantity").val();
+    order_type = $("#order_type").val();
+    
+    $.get("/quote/"+order_type+"?quantity="+quantity, function(data) {
+      console.log(data.price);
+      $("#price").html("$" + data.price);
+      $("#price_wrap").show();
+    });
+  });
+});

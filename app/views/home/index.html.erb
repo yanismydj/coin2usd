@@ -1,2 +1,19 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<form method="post" id="quote_form">
+  <div class="input-group">
+  <select class="form-control" id="order_type" name="order_type">
+    <option selected="selected" value="buy">Buy</option>
+    <option value="sell">Sell</option>
+  </select>
+  <br />
+
+  <input type="text" class="form-control" placeholder="Quantity" id="quantity">
+  <hr />  
+  <input class="btn btn-primary" name="commit" type="submit" value="Quote!" /></div>
+</form>
+
+<br />
+
+<div class="well" id="price_wrap">
+  <h3>Estimated Price:</h3>
+  <div id="price"></div>
+</div>
