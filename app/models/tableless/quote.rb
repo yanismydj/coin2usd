@@ -28,6 +28,13 @@ class Quote
     end
   end
 
+  def to_json
+    {
+      price: price,
+      combined_orders: combined_orders
+    }
+  end
+
   def calculate_aggregated_price
     @price = 0.0 
     combined_orders.each_with_index do |order, key|
