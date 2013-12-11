@@ -1,6 +1,15 @@
 == Coin2usd
 Challenge for coinbase
 
+To run tests:
+```rspec spec```
+
+To run it locally:
+```rails server```
+
+on heroku:
+http://coinbase-yan-test.herokuapp.com/
+
 Instructions:
 
 In this challenge you will be asked to build a simple web app (or mobile app - your choice) which uses an API to calculate exchange rates between USD and bitcoin.
