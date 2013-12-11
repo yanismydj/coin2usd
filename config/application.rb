@@ -11,5 +11,7 @@ module Coin2usd
     config.generators do |g|
       g.test_framework  :rspec, fixture: true, views: false
     end
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
   end
 end
