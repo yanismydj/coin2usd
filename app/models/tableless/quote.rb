@@ -7,7 +7,7 @@ class Quote
         if quantity > ask.quantity
           # aggregate asks since just one order will not fulfil this request
           combined_orders << asks
-          #quantity_combined += ask.quantity
+          quantity_combined += ask.quantity
         else
           @price = ask.price
           break

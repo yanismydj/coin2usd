@@ -6,8 +6,8 @@ describe Quote, vcr: { match_requests_on: [:host] } do
       context "buying" do
         context "a low amount(fulfilled by 1 ask)" do
           it "provides you a quote" do
-            @quote = Quote.new(1.0, :buy)
-            @quote.price.should == 879.91
+            @quote = Quote.new(0.01, :buy)
+            @quote.price.should == 871.34
           end
         end
 
@@ -21,8 +21,8 @@ describe Quote, vcr: { match_requests_on: [:host] } do
       context "selling" do
         context "a low quantity(fulfilled by 1 bid)" do
           it "provides you a quote" do
-            @quote = Quote.new(1.0, :sell)
-            @quote.price.should == 870.0
+            @quote = Quote.new(0.01, :sell)
+            @quote.price.should == 870.63
           end
         end
 
