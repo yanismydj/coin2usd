@@ -25,12 +25,12 @@ http_interactions:
       Date:
       - Wed, 11 Dec 2013 22:51:49 GMT
       Set-Cookie:
-      - incap_ses_84_99025=LUbsIUBU4BBuba+xPG4qAYXsqFIAAAAAIWdiekdYqXzkQB2fnhWx0A==;
+      - incap_ses_84_99025=84ctVgP+OHi0ba+xPG4qAYXsqFIAAAAAViqz1Mf6OCD8mkvLi4ebBw==;
         path=/; Domain=.bitstamp.net
-      - visid_incap_99025=JDkGldEhQ/+JouaARf0fHYXsqFIAAAAAQUIPAAAAAABdwQo1Q7dT2xot6r5ob8Ji;
+      - visid_incap_99025=x2fLyrTOTqqvMxcbw37nY4XsqFIAAAAAQUIPAAAAAADM75FOnN/udBFSNu/2g7Y+;
         expires=Fri, 11 Dec 2015 13:24:44 GMT; path=/; Domain=.bitstamp.net
       X-Iinfo:
-      - 6-22896230-0 0CNY RT(1386802309565 31) q(0 -1 -1 -1) r(0 -1)
+      - 6-22896294-0 0CNY RT(1386802309706 44) q(0 -1 -1 -1) r(0 -1)
       X-Cdn:
       - Incapsula
     body:
@@ -1521,5 +1521,5 @@ http_interactions:
         ["31337.00", "1.00000000"], ["50000.00", "0.47741737"], ["63000.00", "1.00000000"],
         ["90000.00", "0.05000000"], ["99999.00", "101.47000000"], ["99999.99", "1.60000000"]]}'
     http_version: 
-  recorded_at: Wed, 11 Dec 2013 22:51:49 GMT
+  recorded_at: Wed, 11 Dec 2013 22:51:50 GMT
 recorded_with: VCR 2.8.0

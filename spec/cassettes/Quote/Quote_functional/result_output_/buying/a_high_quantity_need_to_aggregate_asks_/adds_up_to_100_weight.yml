@@ -21,16 +21,16 @@ http_interactions:
       Cache-Control:
       - max-age=60, public
       Expires:
-      - Wed, 11 Dec 2013 22:52:51 GMT
+      - Wed, 11 Dec 2013 22:52:49 GMT
       Date:
-      - Wed, 11 Dec 2013 22:51:51 GMT
+      - Wed, 11 Dec 2013 22:51:49 GMT
       Set-Cookie:
-      - incap_ses_84_99025=lnHiHNAZ0wpTca+xPG4qAYfsqFIAAAAA4p6aos2H2jFVx0rBPZ0Vog==;
+      - incap_ses_84_99025=NvqxVsZgJ0TGbK+xPG4qAYXsqFIAAAAAo2NSSALTeZQmVA2L442H7Q==;
         path=/; Domain=.bitstamp.net
-      - visid_incap_99025=0PSQNKtNQy+n+XCui5RZCIfsqFIAAAAAQUIPAAAAAADlYVDkrfW9Fwgx/gbpurXo;
+      - visid_incap_99025=4sor7o30RRm8VAnJL3nfSYXsqFIAAAAAQUIPAAAAAABb05ZnyTz6j/CD9IVZT3bF;
         expires=Fri, 11 Dec 2015 13:33:12 GMT; path=/; Domain=.bitstamp.net
       X-Iinfo:
-      - 4-10485109-0 0CNY RT(1386802311596 44) q(0 -1 -1 -1) r(0 -1)
+      - 5-17335906-0 0CNY RT(1386802309203 31) q(0 -1 -1 -1) r(0 -1)
       X-Cdn:
       - Incapsula
     body:
@@ -1521,7 +1521,7 @@ http_interactions:
         ["31337.00", "1.00000000"], ["50000.00", "0.47741737"], ["63000.00", "1.00000000"],
         ["90000.00", "0.05000000"], ["99999.00", "101.47000000"], ["99999.99", "1.60000000"]]}'
     http_version: 
-  recorded_at: Wed, 11 Dec 2013 22:51:51 GMT
+  recorded_at: Wed, 11 Dec 2013 22:51:49 GMT
 - request:
     method: get
     uri: https://www.bitstamp.net/api/order_book/
@@ -1543,16 +1543,16 @@ http_interactions:
       Cache-Control:
       - max-age=60, public
       Expires:
-      - Wed, 11 Dec 2013 22:52:51 GMT
+      - Wed, 11 Dec 2013 22:52:49 GMT
       Date:
-      - Wed, 11 Dec 2013 22:51:51 GMT
+      - Wed, 11 Dec 2013 22:51:49 GMT
       Set-Cookie:
-      - incap_ses_84_99025=oRzUTrAcsD2bca+xPG4qAYfsqFIAAAAAbkWHXL8Yjis48qJE7X+yVQ==;
+      - incap_ses_84_99025=Y9j7OEwe8DUcba+xPG4qAYXsqFIAAAAAo0aeUUG8Eu2yjcgozBa2ZA==;
         path=/; Domain=.bitstamp.net
-      - visid_incap_99025=LYQE0wsqQ66ZiFN03E2Mo4fsqFIAAAAAQUIPAAAAAADhtOSkhRC+aRBPX7Adj1U5;
+      - visid_incap_99025=qKERtAQATaK5ddHwTL9EWoXsqFIAAAAAQUIPAAAAAAD9ErOwXPpsZJxlGY5d9nkO;
         expires=Fri, 11 Dec 2015 13:24:44 GMT; path=/; Domain=.bitstamp.net
       X-Iinfo:
-      - 6-22897433-0 0CNY RT(1386802311755 34) q(0 -1 -1 -1) r(0 -1)
+      - 6-22896090-0 0CNY RT(1386802309356 57) q(0 -1 -1 -1) r(0 -1)
       X-Cdn:
       - Incapsula
     body:
@@ -3043,5 +3043,5 @@ http_interactions:
         ["31337.00", "1.00000000"], ["50000.00", "0.47741737"], ["63000.00", "1.00000000"],
         ["90000.00", "0.05000000"], ["99999.00", "101.47000000"], ["99999.99", "1.60000000"]]}'
     http_version: 
-  recorded_at: Wed, 11 Dec 2013 22:51:52 GMT
+  recorded_at: Wed, 11 Dec 2013 22:51:49 GMT
 recorded_with: VCR 2.8.0

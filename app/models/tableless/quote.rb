@@ -5,30 +5,25 @@ class Quote
     @quote_quantity = quantity
     @quantity_combined = 0.0
     if type == :buy
-      bitstamp_order_book_asks.each do |ask|
-        if quantity > ask.quantity
-          # aggregate asks since just one order will not fulfil this request
-          combined_orders << ask
-
-          if (@quantity_combined + ask.quantity) >= quantity
-            calculate_aggregated_price
-            break
-          else
-            @quantity_combined += ask.quantity
-          end
-        else
-          @price = ask.price
-          break
-        end
-      end
+      subject = bitstamp_order_book_asks
     else # they are selling
-      bitstamp_order_book_bids.each do |bid|
-        if quantity > bid.quantity
-          # aggregate bids since just one order will not fulfil this request
-        else
-          @price = bid.price
+      subject = bitstamp_order_book_bids
+    end
+      
+    subject.each do |order|
+      if quantity > order.quantity
+        # aggregate asks since just one order will not fulfil this request
+        combined_orders << order
+
+        if (@quantity_combined + order.quantity) >= quantity
+          calculate_aggregated_price
           break
+        else
+          @quantity_combined += order.quantity
         end
+      else
+        @price = order.price
+        break
       end
     end
   end

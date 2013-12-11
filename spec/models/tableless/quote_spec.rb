@@ -7,22 +7,25 @@ describe Quote, vcr: { match_requests_on: [:host] } do
         context "a low amount(fulfilled by 1 ask)" do
           it "provides you a quote" do
             @quote = Quote.new(0.01, :buy)
-            @quote.price.should == 871.34
+            @quote.price.should == 880.68
           end
         end
 
-        it "a high quantity(need to aggregate asks)" do
-          @quote = Quote.new(100.0, :buy)
-          @quote.combined_orders.size.should == 34
-          @quote.combined_orders.first.should be_an Ask
-          @quote.quantity_combined.should > 50.0
-          @quote.combined_orders.first.weight.should_not be_nil
-          @quote.price.should == 884.16
-        end
+        context "a high quantity(need to aggregate asks)" do
+          before { @quote = Quote.new(100.0, :buy) }
 
-        it "adds up to 100% weight" do
-          @quote = Quote.new(100.0, :buy)
-          @quote.total_combined.should == 1.0
+          it "gives you a correct price" do
+            @quote.combined_orders.size.should == 40
+            @quote.combined_orders.first.should be_an Ask
+            @quote.quantity_combined.should > 50.0
+            @quote.combined_orders.first.weight.should_not be_nil
+            @quote.price.should == 887.99
+          end
+
+          it "adds up to 100% weight" do
+            @quote = Quote.new(100.0, :buy)
+            @quote.total_combined.should == 1.0
+          end
         end
       end
 
@@ -30,11 +33,25 @@ describe Quote, vcr: { match_requests_on: [:host] } do
         context "a low quantity(fulfilled by 1 bid)" do
           it "provides you a quote" do
             @quote = Quote.new(0.01, :sell)
-            @quote.price.should == 870.63
+            @quote.price.should == 873.58
           end
         end
 
-        pending "a high quantity(need to aggregate bids)"
+        context "a high quantity(need to aggregate bids)" do
+          before { @quote = Quote.new 100.0, :sell }
+
+          it "gives you a correct price" do
+            @quote.combined_orders.size.should == 15
+            @quote.combined_orders.first.should be_an Bid
+            @quote.quantity_combined.should > 50.0
+            @quote.combined_orders.first.weight.should_not be_nil
+            @quote.price.should == 870.21
+          end
+
+          it "adds up to 100% weight" do
+            @quote.total_combined.should == 1.0
+          end
+        end
       end
     end
   end
@@ -48,11 +65,11 @@ describe Quote, vcr: { match_requests_on: [:host] } do
       end
 
       it "is using vcr and replaying a response" do
-        quote.bitstamp_order_book_data["timestamp"].should == "1386799078"
+        quote.bitstamp_order_book_data["timestamp"].should == "1386802262"
       end
 
       it "has bids" do # we recorded a response with vcr so this will be deterministic
-        quote.bitstamp_order_book_data["bids"].size.should == 2653
+        quote.bitstamp_order_book_data["bids"].size.should == 2654
       end
     end
 
@@ -68,7 +85,7 @@ describe Quote, vcr: { match_requests_on: [:host] } do
       end
 
       it "has bids" do
-        quote.bitstamp_order_book_bids.size.should == 2653
+        quote.bitstamp_order_book_bids.size.should == 2654
       end
     end
 
@@ -84,7 +101,7 @@ describe Quote, vcr: { match_requests_on: [:host] } do
       end
 
       it "has bids" do
-        quote.bitstamp_order_book_asks.size.should == 1791
+        quote.bitstamp_order_book_asks.size.should == 1800
       end
     end
 
