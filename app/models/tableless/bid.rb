@@ -1,4 +1,4 @@
-class Bid
+class Bid < Order
   attr_accessor :price, :quantity, :weight
 
   def initialize(bitstamp_array)

@@ -34,13 +34,27 @@ class Quote
   end
 
   def calculate_aggregated_price
-    last_order = combined_orders.pop
+    @price = 0.0 
+    combined_orders.each_with_index do |order, key|
+      if key != combined_orders.size - 1
+        order.weight = order.quantity / @quote_quantity
+      else
+        #last order
+        order.weight = (@quote_quantity - @quantity_combined) / @quote_quantity
+      end
 
-    combined_orders.each do |order|
-      order.weight = order.quantity / @quote_quantity
+      @price += order.weighted_price
     end
 
-    @price = 111
+    @price = @price.round(2)
+  end
+
+  def total_combined
+    output = 0.0
+    combined_orders.each do |order|
+      output += order.weight
+    end
+    output.round
   end
 
   def combined_orders
