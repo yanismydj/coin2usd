@@ -15,7 +15,7 @@ Write a simple web app that calculates exchange rates between Bitcoin and USD.  
 https://www.bitstamp.net/api/
 https://www.bitstamp.net/api/order_book/
 
-The order book is an array of bids (offers to buy) and asks (offers to sell).  Each order has a price and quantity.  Bids and asks are sorted by price.  You should start with the lowest bid price and highest ask price.  If the quantity you would like to buy or sell, cannot be fulfilled by the lowest bid, or highest ask, you will need to consume multiple bids or asks, in order, and your quote will be a weighted average of those prices.
+The order book is an array of bids (offers to buy) and asks (offers to sell).  Each order has a price and quantity.  Bids and asks are sorted by price.  You should start with the lowest bid price and highest ask price(yan note: this has to be wrong).  If the quantity you would like to buy or sell, cannot be fulfilled by the lowest bid, or highest ask, you will need to consume multiple bids or asks, in order, and your quote will be a weighted average of those prices.
 
 Your calculated quotes should take into account:
 - whether the user is buying or selling

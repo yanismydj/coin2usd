@@ -1,28 +1,46 @@
 class Quote
-  def intialize(quantity, buying = true)
-    if buying
+  attr_accessor :bids, :asks, :price
 
+  def initialize(quantity = 0, type = :buy)
+    if type == :buy
+      bitstamp_order_book_asks.each do |ask|
+        if quantity > ask.quantity
+
+        else
+          @price = ask.price
+        end
+      end
     else # they are selling
+      bitstamp_order_book_bids.each do |bid|
+        if quantity > bid.quantity
 
+        else
+          @price = bid.price
+        end
+      end
     end
   end
 
-  def highest_ask
-    bitstamp_order_book_asks.first # ["873.10", "0.05500000"]
+  def lowest_ask # lowest priced offer to sell
+    bitstamp_order_book_asks.last # ["873.10", "0.05500000"]
   end
 
-  def lowest_bid 
-    # lowest price someone will buy for. this is what the instructions call 
-    # for but this seems wrong. you'd want the highest price if you were selling
-    bitstamp_order_book_bids.last # ["0.01", "1044278.00000000"]
+  def highest_bid # offer to buy
+    bitstamp_order_book_bids.first # ["0.01", "1044278.00000000"]
   end
 
   def bitstamp_order_book_bids
-    bitstamp_order_book_data["bids"] # sorting by price, descending
+    # sorting by price, descending
+    @bids ||= bitstamp_order_book_data["bids"].map do |bid|
+      Bid.new bid
+    end
   end
 
   def bitstamp_order_book_asks
-    bitstamp_order_book_data["asks"] # sorting by price, ascending
+    # sorting by price, ascending
+    @asks ||= bitstamp_order_book_data["asks"].map do |ask|
+      Ask.new ask
+    end
   end
 
   def bitstamp_order_book_data
