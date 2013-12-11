@@ -1,5 +1,5 @@
 class Ask
-  attr_accessor :price, :quantity
+  attr_accessor :price, :quantity, :weight
 
   def initialize(bitstamp_array)
     # bitstamp_arry looks like this ["877.00", "1.74793488"]

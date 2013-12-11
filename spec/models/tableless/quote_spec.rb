@@ -12,8 +12,11 @@ describe Quote, vcr: { match_requests_on: [:host] } do
         end
 
         it "a high quantity(need to aggregate asks)" do
-          @quote = Quote.new(1000.0, :buy)
-          @quote.combined_orders.size.should > 1
+          @quote = Quote.new(100.0, :buy)
+          @quote.combined_orders.size.should == 33
+          @quote.combined_orders.first.should be_an Ask
+          @quote.quantity_combined.should > 50.0
+          @quote.combined_orders.first.weight.should_not be_nil
           @quote.price.should == 10000
         end
       end

@@ -1,13 +1,21 @@
 class Quote
-  attr_accessor :bids, :asks, :price
+  attr_accessor :asks, :bids, :price, :quote_quantity, :quantity_combined
 
-  def initialize(quantity = 0, type = :buy)
+  def initialize(quantity = 0.0, type = :buy)
+    @quote_quantity = quantity
+    @quantity_combined = 0.0
     if type == :buy
       bitstamp_order_book_asks.each do |ask|
         if quantity > ask.quantity
           # aggregate asks since just one order will not fulfil this request
-          combined_orders << asks
-          quantity_combined += ask.quantity
+          combined_orders << ask
+
+          if (@quantity_combined + ask.quantity) >= quantity
+            calculate_aggregated_price
+            break
+          else
+            @quantity_combined += ask.quantity
+          end
         else
           @price = ask.price
           break
@@ -25,12 +33,18 @@ class Quote
     end
   end
 
-  def combined_orders
-    @combined_orders ||= []
+  def calculate_aggregated_price
+    last_order = combined_orders.pop
+
+    combined_orders.each do |order|
+      order.weight = order.quantity / @quote_quantity
+    end
+
+    @price = 111
   end
 
-  def quantity_combined
-    @quantity_combined ||= 0
+  def combined_orders
+    @combined_orders ||= []
   end
 
   def lowest_ask # lowest priced offer to sell
