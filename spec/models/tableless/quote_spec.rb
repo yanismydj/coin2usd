@@ -7,18 +7,22 @@ describe Quote, vcr: { match_requests_on: [:host] } do
         context "a low amount(fulfilled by 1 ask)" do
           it "provides you a quote" do
             @quote = Quote.new(1.0, :buy)
-            @quote.price.should == 1
+            @quote.price.should == 879.91
           end
         end
 
-        pending "a high quantity(need to aggregate asks)"
+        it "a high quantity(need to aggregate asks)" do
+          @quote = Quote.new(1000.0, :buy)
+          @quote.combined_orders.size.should > 1
+          @quote.price.should == 10000
+        end
       end
 
       context "selling" do
         context "a low quantity(fulfilled by 1 bid)" do
           it "provides you a quote" do
             @quote = Quote.new(1.0, :sell)
-            @quote.price.should == 1
+            @quote.price.should == 870.0
           end
         end
 

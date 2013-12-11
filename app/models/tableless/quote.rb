@@ -5,20 +5,32 @@ class Quote
     if type == :buy
       bitstamp_order_book_asks.each do |ask|
         if quantity > ask.quantity
-
+          # aggregate asks since just one order will not fulfil this request
+          combined_orders << asks
+          #quantity_combined += ask.quantity
         else
           @price = ask.price
+          break
         end
       end
     else # they are selling
       bitstamp_order_book_bids.each do |bid|
         if quantity > bid.quantity
-
+          # aggregate bids since just one order will not fulfil this request
         else
           @price = bid.price
+          break
         end
       end
     end
+  end
+
+  def combined_orders
+    @combined_orders ||= []
+  end
+
+  def quantity_combined
+    @quantity_combined ||= 0
   end
 
   def lowest_ask # lowest priced offer to sell
